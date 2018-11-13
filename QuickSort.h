@@ -12,11 +12,11 @@ using namespace std;
 
 class QuickSort {
 public:
-    void sort(vector<int *> &, unsigned long, unsigned long);
+    void sort(vector<int *> &, long, long);
 
 protected:
-    unsigned long choose_pivot(vector<int *> &, unsigned long, unsigned long);
-    unsigned long partition(vector<int *> &, unsigned long, unsigned long);
+    long choose_pivot(vector<int *> &, long, long);
+    long partition(vector<int *> &, long, long);
 };
 
 

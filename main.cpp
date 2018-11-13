@@ -19,12 +19,13 @@ int main(int argc, char* argv[]) {
 
     file_name = argv[1];
     ifstream ifs {file_name};
-    int number;
+    int *number;
     if (ifs) {
         cout << "Opened file: " << file_name << endl;
         while (ifs.good()) {
-            ifs >> number;
-            numbers.push_back(&number);
+            number = new int;
+            ifs >> *number;
+            numbers.push_back(number);
         }
         quickSort.sort(numbers, 0, numbers.size() - 1);
     } else {

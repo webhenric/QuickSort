@@ -4,27 +4,42 @@
 
 #include "QuickSort.h"
 
-void QuickSort::sort(vector<int *> &numbers, unsigned long left, unsigned long right) {
+void QuickSort::sort(vector<int *> &numbers, long left, long right) {
     if (left >= right) {
         return;
     }
 
     int *temp = numbers.at(left);
-    unsigned long pivot = choose_pivot(numbers, left, right);
+    long pivot = choose_pivot(numbers, left, right);
     numbers[left] = numbers.at(pivot);
     numbers[pivot] = temp;
 
-    unsigned long new_pivot = partition(numbers, left, right);
+    long new_pivot = partition(numbers, left, right);
 
     sort(numbers, left, new_pivot - 1);
     sort(numbers, new_pivot + 1, right);
-    
 }
 
-unsigned long QuickSort::partition(vector<int *> &numbers, unsigned long left, unsigned long right) {
-    return 0;
+long QuickSort::partition(vector<int *> &numbers, long left, long right) {
+    int *pivot = numbers[left];
+    long i = left + 1;
+    int *temp;
+
+    for (long j = left + 1; j <= right; ++j) {
+        if (*numbers[j] < *pivot) {
+            temp = numbers[j];
+            numbers[j] = numbers[i];
+            numbers[i] = temp;
+            ++i;
+        }
+    }
+    temp = numbers[left];
+    numbers[left] = numbers[i - 1];
+    numbers[i - 1] = temp;
+
+    return i - 1;
 }
 
-unsigned long QuickSort::choose_pivot(vector<int *> &numbers, unsigned long left, unsigned long right) {
+long QuickSort::choose_pivot(vector<int *> &numbers, long left, long right) {
     return left;
 }
