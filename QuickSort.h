@@ -14,9 +14,27 @@ class QuickSort {
 public:
     void sort(vector<int *> &, long, long);
 
+    long get_comparisons();
+
 protected:
-    long choose_pivot(vector<int *> &, long, long);
+    virtual long choose_pivot(vector<int *> &, long, long);
+
     long partition(vector<int *> &, long, long);
+
+    void add_comparisons(long);
+
+private:
+    int comparisons = 0;
+};
+
+class QuickSortPivotLast : public QuickSort {
+    long choose_pivot(vector<int *> &, long, long) override;
+
+};
+
+class QuickSortPivotMedian : public QuickSort {
+    long choose_pivot(vector<int *> &, long, long) override;
+
 };
 
 
